@@ -1,0 +1,1247 @@
+<!doctype html>
+<html style="background: #191919">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0, target-densitydpi=device-dpi">
+<title>Seeing Forest</title>
+<link href="SeeingForest.css" rel="stylesheet" type="text/css">	
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>	
+	
+	<script type="text/javascript"> 
+	
+		
+	$(document).ready(function(){
+			
+		
+   
+      		
+		
+		
+			$(window).scroll(function() {
+				
+				var windowTop = $(window).scrollTop();
+				var stickyTop = $(".Mobile:eq(0)").offset().top - 100;
+				var stickyTop1 = $(".Mobile:eq(1)").offset().top - 80;
+				var stickyTop2 = $(".Mobile:eq(2)").offset().top - 80;
+				var stickyTop3 = $(".Mobile:eq(3)").offset().top - 80;
+				
+
+				if (stickyTop < windowTop) {
+				//Intro
+					$('.works-but').show();
+					$('.works-but').addClass('sticky');
+					$('.Mobile-show:eq(0)').show();
+					$('.Mobile-show:eq(1)').hide();
+					$('.Mobile-show:eq(0)').addClass('sticky-T1');
+					$('.Mobile-show:eq(1)').removeClass('sticky-TT');
+    		} else {
+					$('.works-but').removeClass('sticky').hide();
+					$('.Mobile-show:eq(1)').removeClass('sticky-T1');
+					$('.Mobile-show:eq(0)').hide();
+				
+    		}
+				
+				if (stickyTop1 < windowTop) {
+				//works	
+					$('.text-but').addClass('sticky').show();
+					$('.Mobile-show:eq(1)').show();
+					$('.Mobile-show:eq(2)').hide();
+					$('.Mobile-show:eq(1)').addClass('sticky-T');
+					$('.Mobile-show:eq(0)').removeClass('sticky-T1');
+					$('.Mobile-show:eq(0)').addClass('sticky-TT');
+    		} else {
+					$('.text-but').removeClass('sticky').hide();
+					$('.Mobile-show:eq(1)').removeClass('sticky-T');
+					$('.Mobile-show:eq(0)').removeClass('sticky-T1');
+    		}
+				
+				if (stickyTop2 < windowTop) {
+					//text
+					$('.cc-but').addClass('sticky').show();
+					$('.Mobile-show:eq(2)').show();
+					$('.Mobile-show:eq(1)').show();
+					$('.Mobile-show:eq(3)').hide();
+					$('.Mobile-show:eq(2)').addClass('sticky-T');
+					$('.Mobile-show:eq(1)').addClass('sticky-TT');
+					$('.Mobile-show:eq(1)').removeClass('sticky-T');
+					
+					$('.Mobile-show:eq(0)').removeClass('sticky-T1');
+    		} else {
+					$('.cc-but').removeClass('sticky').hide();
+					$('.Mobile-show:eq(2)').removeClass('sticky-T');
+					$('.Mobile-show:eq(1)').removeClass('sticky-TT');
+    		}
+				
+				if (stickyTop3 < windowTop) {
+					//catalogue
+					$('.cc-but').hide();
+					$('.text-but').hide();
+					$('.works-but').hide();
+					$('.Mobile-show:eq(3)').show();
+					$('.Mobile-show:eq(2)').show();
+					$('.Mobile-show:eq(3)').addClass('sticky-T');
+					$('.Mobile-show:eq(2)').addClass('sticky-TT');
+					$('.Mobile-show:eq(2)').removeClass('sticky-T');
+					
+    		} else {
+					$('.cc-but').show();
+					$('.Mobile-show:eq(3)').removeClass('sticky-T');
+				$('.Mobile-show:eq(2)').removeClass('sticky-TT');
+    		}
+				
+  			});
+			
+			
+		var dwidth = jQuery(window).width();
+		jQuery(window).bind('resize', function(e){
+
+    		var wwidth = jQuery(window).width();
+
+    	if(dwidth!==wwidth){
+     		dwidth = jQuery(window).width();
+
+    	if (window.RT) clearTimeout(window.RT);
+    		window.RT = setTimeout(function(){
+        		this.location.reload(false); 
+    		}, 800);
+		}
+		});
+		
+		
+		var modal = document.getElementById("myModal");
+
+			var img = document.getElementById("myImg");
+			var modalImg = document.getElementById("img01");
+			var captionText = document.getElementById("caption");
+			img.onclick = function(){
+  				modal.style.display = "block";
+  				modalImg.src = this.src;
+  				captionText.innerHTML = this.alt;
+				}
+
+
+				var span = document.getElementsByClassName("close")[0];
+
+
+			span.onclick = function() { 
+  			modal.style.display = "none";
+			}	
+			
+			$('.modal').click(function (event) {
+     			$("#myModal").hide();
+   			});     
+			
+		
+			var myIndex = 0;
+			carousel();
+
+			function carousel() {
+  				var i;
+  				var x = document.getElementsByClassName("mySlides");
+  				for (i = 0; i < x.length; i++) {
+    				x[i].style.display = "none";  
+				}
+  				myIndex++;
+				if (myIndex > x.length) {myIndex = 1}    
+  					x[myIndex-1].style.display = "block";  
+  					setTimeout(carousel, 2000); // Change image every 2 seconds
+				}	
+		
+		var myIndex1 = 0;
+			carousel1();
+
+			function carousel1() {
+  				var i;
+  				var x = document.getElementsByClassName("mySlides1");
+  				for (i = 0; i < x.length; i++) {
+    				x[i].style.display = "none";  
+				}
+  				myIndex1++;
+				if (myIndex1 > x.length) {myIndex1 = 1}    
+  					x[myIndex1-1].style.display = "block";  
+  					setTimeout(carousel1, 2000); // Change image every 2 seconds
+				}	
+			
+		
+		});	
+		
+		
+	
+	function toggle(button){
+
+    // this works because the button is immediately after the "moreDetails" element it pertains to
+    let Text = button.parentElement.querySelector(".moreDetails");
+
+    // this would work if you move the button so it is not immediately after moreDetails, but still in the same parent div.
+    //let Text = button.parentElement.querySelector(".moreDetails");
+    
+	
+		
+	if(Text.style.display=="block"){
+    	Text.style.display="none"
+		button.innerHTML = "> read more"
+  	} else {
+    	Text.style.display="block"
+		button.innerHTML = "< see less"
+  	}	
+		
+   /* if(Text.style.display == "none"){
+        Text.style.display= "block";
+		button.innerHTML = "< see less"
+		
+    }
+    else {
+        Text.style.display = "none";
+		button.innerHTML= "> read more"
+    }*/
+		
+			
+		
+	}
+
+		const moreDetailses = document.querySelectorAll(".moreDetails");
+		for (let i = 0; i < moreDetailses.length; i++) {
+  		moreDetailses[i].style.display = "none";
+		}
+		
+	
+
+		
+		
+
+	</script>
+	
+	
+</head>
+
+<body>
+		
+<div class="mainWrap">
+	
+	<div class="columns">
+		
+		<div class="topCol-M">
+			<img class="logo" src="SeeingForest_Logo1.png"><br>
+			<div class="name1"><br>Robert Zhao Renhui<br>curated by</div>
+			<div class="name1 rightAlign">Haeju Kim</div>
+			<div class="name3"><br>Singapore Pavilion<br>The 60th International Art Exhibition<br> of La Biennale di Venezia</div>
+			<div class="name3 rightAlign"><br>20 April – 24 November 2024<br><br><br><br></div>
+		</div>
+		
+		
+		<div class="topCol">
+			<img class="logo" src="SeeingForest_Logo1.png">
+		</div>
+		
+		<a href="more.html#intro"><button class="titleBorder Web">Introduction</button></a>
+		<a href="#intro"><button class="titleBorder Mobile">Introduction</button></a>
+		
+		<a href="#intro"><button class="titleBorder Mobile-show">Introduction</button></a>
+		
+		
+		<br>
+		
+			<p><a id="intro"></a>Seeing Forest is a project conceived by Robert Zhao Renhui for the Singapore Pavilion at the 60th International Art Exhibition of La Biennale de Venezia.</p>
+			
+			<p>In <i>Seeing Forest</i>, Zhao offers an evocative exploration of secondary forests—forests or woodland areas that have regrown over land disturbed by human development. Often taken over by plant and animal species introduced to Singapore in the 19th century, these thresholds zones between primary forests and developed urban areas offer insights into a complex web of human and non-human coexistence.</p>
+			
+			<p>The patient observation of a natural world that we can never fully comprehend is a hallmark of the artist Robert Zhao’s work. Since 1998, under the auspices of his own fictitious Institute of Critical Zoologists, Zhao’s many and varied projects have served as a lens that highlights the resilience of nature and the interactions that result from when it intersects with human life and society. In the last eight years, he has been documenting various secondary forests in Singapore to capture footage of phenomena rarely or never seen before. For this exhibition, the artist’s accumulated observations are condensed and organized into thought-provoking installations that explore the real and imaginal dimensions of such a secondary forest space.</p>
+			
+		
+			<p>The main work is a two-channel video, <i>The Owl, The Travellers, and the Cement Drain</i> (2024) displaying scenes of the secondary forest: its trees; animals; abandoned tents of migrant workers; birds flying in to drink from a concrete drain; as well as an unstable, fluctuating narrative of two human characters journeying through it. In conversation with this piece is a sculptural video installation <i>Trash Stratum</i> (2024) comprising multiple screens that show various creatures visiting the forest arranged around a deconstructed cabinet of curiosities, which alludes to and destabilizes colonial methods of natural history classifications. Also within this structure are a number of objects that the artist found during his exploration of the forest, such as old bricks and bottles, referring to the presence of human histories that are entangled with natural ones.</p>
+
+			<p><i>Seeing Forest</i> invites audiences to experience the layered complexities and realities of the world around us. We see how the island of Singapore has evolved to the present landscape, revealing some of the ways in which human urban design influenced the natural world and how the natural world responds to it. <i>Seeing Forest</i> reveals how these transitional spaces can offer points of intersection for history, discovery, and sustainability, while suggesting that the edge of a city — especially one that is so carefully planned — may be the most intense frontier in existence.</p>
+
+			<p>After Venice, the exhibition will continue at the Singapore Art Museum, opening in January 2025. </p>
+
+
+
+		
+	</div>	
+
+	<div class="columns">
+		<div class="topCol">
+		<div class="name1">Robert Zhao Renhui<br>curated by</div>
+		<div class="name1 rightAlign">Haeju Kim</div>
+		</div>
+		
+		
+		<a href="more.html#works"><button class="titleBorder Web">Works</button></a>
+		<a href="#works"><button class="titleBorder Mobile">Works</button></a><br>
+		<a href="#works"><button class="titleBorder Mobile-show">Works</button></a><br>
+		<a href="#works"><button class="works-but">Works ></button></a>
+		
+		
+		<div class="center-align">1.</div><a id="works"></a>
+		<p><i>A Guide to a Secondary Forest of Singapore</i><br>
+		</p>
+		
+		<div class="works-Main-center works-Main">
+		<img id="myImg" src="01-guide.png">
+			
+		</div>
+		
+		<div id="myModal" class="modal">
+  			<span class="close">&times;</span>
+  			<img class="modal-content" id="img01">
+  			<div id="caption"></div>
+		</div>	
+		
+		<h4><br>Archival pigment print, 150 × 108 cm. (2024)</h4>
+		
+		<p>This imaginary forest map presents an overview of the artist's extensive explorations and research in Singapore's secondary forests — the ones that have sprung up after the destruction of the primary vegetation.</p>
+		
+		<div class="details">
+		
+		<button class="readMoreNav" title="Click to Show"  type="button" onclick="toggle(this)">> read more</button>
+	
+
+		<div class="moreDetails">
+		<p><br>Reflecting the rich ecology of the secondary forests near his home and the forgotten Queen’s Own Hill area — which comprises native and foreign species that interact to create new ecological situations — the map incorporates symbolic stations and features that Zhao encountered on his frequent walks and via remote sensing cameras over an extended period. Notable natural and man-made scenes and elements depicted include a shattered concrete drain revealing a re-emerged river, which became vital to the forest's living organisms.</p>
+			</div>
+		</div>	
+			
+		<br>	
+		<hr>
+		
+		<div class="center-align"><br>2.</div>
+		<p>
+			<i>Buffy</i>
+		</p>
+		
+		<div class="works-Main-center works-Main-P">
+		<img src="B-01.jpg">
+		</div>	
+			
+		<h4><br>Mixed media, dimensions variable. (2024)</h4>
+		
+		
+		<p>The Buffy fish owl is a bird native to Southeast Asia. The image of Buffy with its back turned to us is a reference to the Heraclitan fragment, “nature loves to hide,” which alludes the true essence of things is not easily grasped or understood by human beings.</p>
+
+		<br>
+		<hr>
+		
+		<div class="center-align"><br>3.</div>
+		<p>
+			<i>The Owl, The Travellers and The Cement Drain</i>
+		</p>
+		
+		<div class="works-Main-center works-Main">
+		
+		<img class="mySlides" src="A-Vid01.jpg">
+		<img class="mySlides" src="A-Vid02.jpg">
+		<img class="mySlides" src="A-Vid03.jpg">
+		<img class="mySlides" src="A-Vid04.jpg">		
+		<img class="mySlides" src="A-Vid05.jpg">
+		<img class="mySlides" src="A-Vid06.png">	
+		<img class="mySlides" src="A-Vid07.png">
+		<img class="mySlides" src="A-Vid08.png">
+		<img class="mySlides" src="A-Vid09.png">		
+		<img class="mySlides" src="A-Vid10.png">
+		<img class="mySlides" src="A-Vid11.png">	
+		<img class="mySlides" src="A-Vid12.png">	
+			
+		</div>	
+			
+		<h4><br>Video, 2 channels, 16:9, colour and sound (3 channels), 46 min. (2024)</h4>
+		
+		<p>This two-channel video features footage collected over a long period, including moments captured during the artist's forest visits, from his apartment on the 26th floor via a zoom lens, and from motion-capturing and body temperature cameras that he installed in the forest.</p>
+
+		
+		<div class="details">
+		<button class="readMoreNav" title="Click to Show"  type="button" onclick="toggle(this)">> read more</button>
+
+		<div class="moreDetails">
+		<p><br>This secondary forest is a place where natural and man-made elements interact, introduced and native species coexist, and past and present intertwine.</p>
+			
+		<p>Abandoned tents languish under the trees. Animals and migratory birds rest on a trash bin and a broken concrete drain. Remnants of military facilities from the British colonial era and the Japanese occupation, as well as items left behind by migrant workers are scattered and buried in the forest. Layered onto this landscape is the unfathomable narrative of two travellers passing through the forest, who speak of things seen in the forest and things the forest sees.</p>
+			
+		<p>The juxtaposition of the two screens showcases the contrast and interaction between the natural world and the events caused by human interventions. Through this, the artist prompts us to reimagine these forests, which are continually shaped and erased by urban expansion, as a mutable space of possibility where the boundaries between human and non-human, and native and foreign are dismantled.</p>
+		
+		<div class="details">
+		<button class="readMoreNav" title="Click to Show"  type="button" onclick="toggle(this)">> read more</button>
+
+		<div class="moreDetails chapters">
+			
+		<p><br>An introduction to a secondary forest in Singapore in ten scenes:</p>
+
+		<h1>From the window of my flat, I can see the edge of the forest</h1>
+		<p class="Indent">In Singapore, urban and natural spaces are often in close proximity, with development constantly shifting the boundaries between such spaces.</p>
+
+		<h1>Travellers</h1>
+		<p class="Indent">Two travellers make their way through the forest and talk about spirits. Overhead, parrots fly about.</p> 
+
+		<h1>The symbols of the divine appear in the <i>Trash Stratum</i></h1>
+		<p class="Indent">The camp of an illegal immigrant who once lived in the forest becomes a congregation point for animals. Objects in the camp, including buckets, bottles and a black trash bin become crucial to their survival.</p>
+
+		<h1>The Cement Drain</h1>
+		<p class="Indent">A natural stream bed re-emerges as the concrete drain that was built over it in 1935 disintegrates.</p> 
+
+		<h1>There is another world and it is in this one</h1>
+		<p class="Indent">Wild boars and humans cross paths at the edge of the forest. Two travellers discover an old stone slab from a former British military camp. Sambar deer observe from nearby. A selection of historical images of the secondary forest from the 1900s to 1940s are shown. A monitor lizard travels through the forest.</p>
+
+		<h1>New worlds</h1>
+		<p class="Indent">The travellers observe happenings in the forest. Animals explore objects left behind by humans.</p>
+
+		<h1>Coming back as a boar</h1>
+		<p class="Indent">I observe a wild boar giving birth from my window. Nearby, a forest is being cleared.</p>
+
+		<h1>A deer walks to the end of the world</h1>
+		<p class="Indent">Sambar deer appear in the forest. Until recently, they were thought to be extinct in Singapore. It is not known where the current population comes from. </p>
+
+		<h1>9: Who knows what the parrot knows?</h1>
+		<p class="Indent">At 7pm every day, parrots flock to this tree to roost. The travellers come to the end of their walk in the forest, and one of them decides to relieve himself.</p> 
+
+		<h1>View from my window, 2014 and 2024.</h1>
+			</div>
+			</div>
+		</div>
+		</div>
+		<br><br>
+		<hr>
+		
+		<div class="center-align"><br>4.</div>
+		<p>
+		<i>Trash Stratum</i>
+		</p>
+		
+		<div class="works-Main-center works-Main">
+		
+		
+		<img class="mySlides1" src="T-02.jpg">
+		<img class="mySlides1" src="T-03.jpg">
+		<img class="mySlides1" src="T-05.jpg">
+		<img class="mySlides1" src="T-01.jpg">		
+
+	
+			
+			
+		</div>	
+			
+		<h4><br>Video, found objects, mixed media<br>
+		Video: 12 channels, 16:9 aspect ratio, colour and sound (4 channels), 46 min. (2024)
+		</h4>
+		
+		<p>The central structure of the installation is a crumbling cabinet made of stacked wooden boxes, which both harks back to the concept of a cabinet of curiosities and challenges the colonial approaches to collection and categorization that are associated with it.</p>
+		
+		<div class="details">
+		<button class="readMoreNav" title="Click to Show"  type="button" onclick="toggle(this)">> read more<br></button>
+
+		<div class="moreDetails">
+		
+		<p><br>Within this structure, 12 screens show various creatures visiting a watering hole in the form of an abandoned dustbin. They are interspersed with various objects from the forest that serve as reminders of human history. Collected during the artist's research or discovered as physical traces entangled with exposed roots, the footage and objects speak to transformations over time within a place, and the endless reconstitution of the forest.</p>
+
+			<p>Through destabilizing colonial narratives of control over nature, <i>Trash Stratum</i> imagines more fluid relationships between the human and nonhuman and reminds us of our entangled existence. </p>
+
+		<div class="creditsUL-works">
+		<ul>A selection of objects and items found on and around Queen’s Own Hill:</ul><br>
+		<li>Videos from a six-year survey on the eastern side of the hill</li>
+		<li>A samsu (DIY illicit liquor) vessel, 1950s</li>
+		<li>Alcohol bottles, 1930s to 1980s</li>
+		<li>A fragment of flowerpot found at 2m depth, 1940s</li>
+		<li>Fragments and glass found underneath a fallen Albizia tree, 1950s</li>
+		<li>Images of former British officers during their stay in Gillman Barracks, 1940s–1950s</li>
+		<li>A photograph of deforestation at Queen’s Own Hill, 1910s</li>
+		<li>Photographs of rubber plantations around Queen’s Own Hill, 1880s–1910s</li>
+		<li>Glass and ceramic shards from a 2m-deep open pit</li>
+		<li>A fragment of a rubber cup used for rubber collection, 1900s</li>
+		<li>A fragment of a sake cup used by the Japanese Imperial Army, 1930s</li>
+		<li>Fragments of medicinal bottles issued to the Japanese Imperial Army, 1940s</li>
+		<li>Fragments of alcohol bottles issued to the Japanese Imperial Army, 1940s</li>
+		<li>Fragments of ceramics from England and Scotland, most likely belonging to British Soldiers, 1920s–1950s</li>
+		<li>Fallen bird nests found on the road near the hill</li>
+		<li>Fragments of bricks from a British Military Barracks built in 1935, demolished in the late 1990s. The bricks have been worn down by running water from a drain, which used to be a stream.</li>
+		<li>Alcohol bottles discarded by a vagrant living in the forest, laid in neat rows, 1990s</li>
+		<li>Soda glass bottles from Singapore, 1960s</li><br>
+
+			
+		<div class="details">
+		<button class="readMoreNav" title="Click to Show"  type="button" onclick="toggle(this)">> read more</button>
+
+		<div class="moreDetails">
+			
+		<ul><br>List of species observed in a Gillman Forest, a one-hectare secondary forest in Singapore, from a single random spot measuring 1 square metre behind an old colonial building, between 2016 and 2022:<br><br>
+		<li>Smooth-coated Otter</li>
+		<li>Crab-eating Macaque</li>
+		<li>Common Tree shrew</li>
+		<li>Plantain Squirrel</li>
+		<li>Reticulated Python</li>
+		<li>Cobra</li>
+		<li>Painted Bronzeback</li>
+		<li>Oriental Whip Snake</li>
+		<li>Water Monitor</li>
+		<li>Clouded Monitor</li>
+		<li>Common Sun Skink</li>
+		<li>Buffy Fish Owl</li>
+		<li>Collared Scops Owl</li>
+		<li>Black Bittern</li>
+		<li>Von Schrenck’s Bittern</li>
+		<li>Malayan Night Heron</li>
+		<li>Black-crowned Night Heron</li>
+		<li>Red-legged Crake (Breeding)</li>
+		<li>White breasted Waterhen (Breeding)</li>
+		<li>Common Kingfisher</li>
+		<li>Collared Kingfisher</li>
+		<li>White-throated Kingfisher</li>
+		<li>Orange-headed Thrush</li>
+		<li>Black-throated Laughing Thrush</li>
+		<li>Red-billed Blue Magpie</li>
+		<li>Japanese Sparrowhawk</li>
+		<li>Changeable Hawk-eagle</li>
+		<li>Oriental Honey Buzzard</li>
+		<li>Brahminy Kite</li>
+		<li>White-bellied Fish Eagle</li>
+		<li>Brown-chested Jungle Flycatcher</li>
+		<li>White-rumped Shama</li>      
+		<li>Siberian Blue Robin</li>
+		<li>Greater Coucal</li>
+		<li>Red-whiskered Bulbul</li>
+		<li>Large-tailed Nightjar</li>
+		<li>Straw-headed Bulbul</li>
+		<li>Asian Koel</li>
+		<li>Yellow-rumped Flycatcher</li>
+		<li>Crow-billed Drongo</li>
+		<li>Tiger Shrike</li>
+		<li>Rufous Woodpecker</li>
+		<li>Pin-striped Tit Babbler</li>
+		<li>Banded Woodpecker</li>
+		<li>Ornate Sunbird</li>
+		<li>Blue-winged Pitta</li>
+		<li>Malaysian Pied Fantail</li>
+		<li>Greater Racket-tailed Drongo</li>
+		<li>Pink-necked Green Pigeon</li>
+		<li>Asian Glossy Starling</li>
+		<li>Javan Myna</li>
+		<li>Red Junglefowl</li>
+		<li>Common Emerald Dove</li>
+		<li>Oriental Magpie Robin</li>
+		<li>Chestnut-winged Cuckoo</li>
+		<li>Common Flameback</li>
+		<li>Crimson Sunbird</li>
+		<li>Asian Brown Flycatcher</li>
+		<li>Mugimaki flycatcher</li>
+		<li>Brown Shrike</li>
+		<li>Crested Goshawk</li>
+		</ul>
+
+			
+		</div>
+		</div>
+			
+		</div>
+		</div>
+		</div>
+		<br><br>
+		
+	</div>	
+	
+	<div class="columns">
+		<div class="topCol">
+		<div class="name1"><br>20 April –</div>
+		<div class="name1 rightAlign">24 November 2024</div>
+		</div>
+		
+		<a href="#texts"><button class="text-but">Texts ></button></a>
+		
+		<a href="more.html#texts"><button class="titleBorder Web">Texts</button></a>
+		<a href="#texts"><button class="titleBorder Mobile">Texts</button></a>
+		<a href="#texts"><button class="titleBorder Mobile-show">Texts</button></a>
+		
+		<a id="texts">&nbsp;</a>
+		<p>
+		<i>Seeing Forest: <br>
+		Curator's Introduction</i><br>
+		by Haeju Kim
+		</p>
+		<div class="readMoreNav Web"><a href="more.html#texts">> read more</a><br><br></div>
+		
+		<div class="topCol-M">
+		<p>A lush forest of tall trees, revealed through the fog; against this backdrop, we see skyscrapers, soaring even higher. A bulldozer pushes a tree out of the way and its crown of leaves shakes as if in a gale. Various household items discarded by migrant workers who once sheltered among the trees have now become watering holes for owls and lizards; frogs lay their eggs there. A monitor lizard drags a scavenged pig’s head through the trash, washed downriver by the currents. Wild boar and sambar deer follow the boundary of the forest, demarcated by a road. They are shifting their habitats and trajectories of movement to accommodate the shifting location of the forest itself, transformed by development...</p> 
+		
+		<div class="details">
+		<button class="readMoreNav" title="Click to Show"  type="button" onclick="toggle(this)">> read more</button>
+
+		<div class="moreDetails"><p><br>After nightfall, two unidentifiable people walk through the forest. The image—reduced to colors and silhouettes by the thermal camera—renders their appearance even more abstract. They appear lost, or perhaps they are finding their way somewhere. They walk, urinate, look closely at the ruins of a building, then talk about the ghosts of the forest and what remains after death. Then they list what exists in the forest.</p>
+				
+		<p>“Who’s watching?” asks Yazid.</p>
+				
+		<p>Umi answers. “All of them lah.”<span class="sup1 supA">1</span></p>
+				
+		<div class="center-align"><br>Face to Face</div><br>
+		<p>The first chapter of John Berger’s <i>About Looking</i> is titled “Why Look at Animals?” In it, Berger reflects on the significance animals hold for humans, and how mankind’s perspective on animals has changed over time, inviting the reader to rethink the relationship between humans and animals once again. To Berger, the birth of the zoo commemorated a new impossibility of natural encounter between human and animal, following a fundamental shift in the way humans view animals. As the longstanding relationships among independent human and animal life were dismembered by fledgling forms of development, more and more humans came to view animals almost entirely as objects.<span class="sup2 supA">2</span> With the advent of the modern city, humans began dividing up and designing locations according to the various social needs and functions. Along the way, nature writ large—including animals—became objects requiring management that were best kept apart from prioritized human activities. Humans razed forests to the ground to make way for housing and building complexes, then planted new trees to create parks. Singapore is a country where the concept of nature management was clearly articulated from the earliest stages of city planning. In 1967, the vision of a “Garden City” drove the creation and management of green spaces within the city; by 1988, the policy was reframed as “City in the Garden,” ensuring the management of urban nature remained a priority within the government’s agenda. Of course, the island’s complex relationship with nature had already been framed by colonial affairs in the nineteenth century. Famously, the history of Singapore’s Botanic Gardens and Zoo can be traced back to Sir Stamford Raffles, a British colonial administrator and avid collector of flora and fauna.<span class="sup3 supA">3</span></p>
+					
+		<p>As the massive destruction of the natural world caused by industrialism and capitalism has come to be understood as a root cause of the ongoing climate emergency, ecological perspectives that engage this reality are garnering more and more interest. Robert Zhao Renhui, however, was incorporating ecological perspectives into his praxis long before such discourse became an established feature in the world of contemporary art. Starting in the mid-1990s, as a young student curious about flora and fauna, Zhao has been observing nature and its various phenomena through his work, questioning the way humans view nature and even founding a semi-fictional research organization, the “Institute of Critical Zoologists,” to further explore the various “spectatorships” of nature.<span class="sup4 supA">4</span> Beyond considering how to see and treat nature from a human perspective, Zhao’s efforts have been geared toward practicing different methods of observation to better see and hear how nature chooses to reveal itself—using photography, video, and installation to try and unpack the sheer complexity of the relationship between humans and nature.</p>	
+				
+		<p>The primary subject of the “seeing” in <i>Seeing Forest</i> is both human and nature, at the same time. But how, then, to recreate nature’s own act of “seeing”? Zhao’s main medium is the camera, and the camera necessarily starts from the position of human technology. And yet, simply imagining or presenting the biological gaze of animals in the name of reproducing the gaze of “nature” is itself an anthropocentric proposition. As such, with the caveat that any exploration of the natural world’s perspective is definitionally mediated by humankind, and therefore interpretive, the question becomes: so how, then, do we bring humans and nature face to face?</p>
+					
+		<p>The term “seeing” here includes not only the act of visually perceiving or observing something, but also the actions and reactions that follow from such physical perception and understanding. In other words, what is captured is not just the “seeing” of any physical eye (be that of the human or the natural world) but also the observation of human interference with nature (resulting from the perspective of human society on nature), and how nature, in turn, reacts to such interference; by observing and recording both from a third-party remove, the artist seeks to uncover the kinds of complex events that lead to seeing as well as perspective and action. These interactions, of course, are unpredictable and revealed only gradually over a long period of time, making them impossible to capture in advance, or, indeed, illustrate in just one or two short scenes. Therefore, the artist is required to observe and record over the long term.</p>
+				
+		<p>The scenes that make up <i>The Owl, The Travellers, and The Cement Drain</i> (2024), a two-channel video, were selected and edited from a vast pool of footage collected over the long term using a range of different cameras in various situations, including moments from the artist’s own forest visits to captures from a zoom lens used to shoot from his twenty-sixth floor apartment, not to mention motion and body temperature cameras he installed in the forest. As most are a combination of scenes shot with very little camera movement, viewers are able to take their time observing the movements that occur deep within each scene as they unfurl against a fixed background. This is video, yes, but the viewing experience has the pacing of flipping through a deck of still slides, generating a quiet rhythm somewhere between stillness and movement. The juxtaposition of the two screens, meanwhile, showcases the contrast and interaction between the natural world and the kind of events generally caused by humans. For example, when the screen on the left shows a pack of wild boars passing a hill, the screen on the right shows a crew of workers before they start construction, surveying the same location. When one side shows the forest being dug up, the other shows the animals fleeing the area for another part of the forest, or perhaps a time-lapse of a growing plant; culled from hundreds of hours of footage, these stories of mutual interference between nature and human society play out in a nonlinear fashion.</p>
+					
+		<div class="center-align"><br>New Forest <span class="sup5 supA">5</span></div><br>
+
+		<p>For <i>Seeing Forest</i>, Zhao zeroes in on the edge where the interference and response between human society and nature is most evident: namely, Singapore’s secondary forests.<span class="sup6 supA">6</span> Secondary forests, which cover about 4 percent of the island nation, are living testaments to the vitality and resilience of nature, taking over neglected plots of bare land where original tree growth was cleared for development or cultivation. Though the artist has frequented these secondary forests for nearly a decade, he has come to pay particular attention to the changes wrought by development around the Woodlands neighborhood, directly facing his high-rise apartment, and the forests adjacent to Gillman Barracks, where he held an artist’s residency at NTU CCA, finding himself intrigued by the fact that these new forms of life were emerging in spaces so close to the sphere of his own daily life.<span class="sup7 supA">7</span> Over the course of countless visits spent observing the minute details of what goes on within, Zhao has found, too, that the formation and transformation of these forests is intertwined with the history of Singapore since the nineteenth century. Note, for example, the fact that so many of the plant and animal species that make up the secondary forest were introduced to the island relatively recently.<span class="sup8 supA">8</span> See, too, how the tents and detritus left behind by migrant workers who once sheltered among the trees of Gillman Barracks—not to mention the cracked remnants of English colonial waterways—are now utilized by these same animals. The fact that different forms of migration have so shaped the formation of this forest demonstrates how secondary forests both mark and manifest key connections between society and nature.</p>
+					
+		<p>Zhao is particularly struck that so many rare birds seek out the secondary forest. The secondary forest around Gillman Barracks is a stopover site on established East Asia-Oceania routes followed by millions of migratory birds, and the artist discovers that human traces left in the forest, like abandoned drain and trash bins, are actually useful to the birds as they rest. Along with these migratory birds, we rediscover the value of the secondary forest as both a space that preserves the memories of the past and a space of ecological diversity where native flora and fauna mix with other species more recently introduced to the Singapore ecosystem. To document this secondary forest, currently at immediate risk of development into yet more apartments and other buildings, is to create an archive of an improbable place where urbanization and semi-wild nature intertwine.</p>
+					
+		<p><i>Trash Stratum</i> (2024), which takes the appearance of a crumbling cabinet, is an anti-monumental monument set in response to the combination of human history and new forest. The form of the structure itself, made of stacked wooden boxes, is intended to include a paradoxical take on the <i>Wunderkammer</i> (“Cabinet of Curiosities”) method of collecting, categorizing, and organizing. Many of the objects themselves are empty: empty albums used to collect postcards from the British Empire’s various colonies, empty bottles and objects left behind by the Japanese soldiers who occupied Singapore between 1942 and 1945 and found themselves stationed at this former military installation, and broken brick fragments are jumbled up in this so-called cabinet alongside screens showing footage of animals coming to drink from empty trash cans left behind by migrant workers. These objects were either collected over the course of the artist’s research or are literal traces of the past discovered during his explorations of the forest, entangled in the exposed roots of a fallen tree. Indeed, the horizontal spread of the cabinet itself resembles a tree’s roots as well—an intimation of the deeply tangled nature of the transformations in human time and place that have occurred throughout the forest’s own reconstitution. Here, the secondary forest is recreated as a tangled deposit of different time periods and histories that is simultaneously a living space, sought out by an endless stream of animals.</p>
+				
+		<div class="center-align"><br>Nature's Own Way, And, What Lies Beyond the Visible</div><br>
+				
+		<p>Moving away from a gaze that actively objectifies nature does not necessarily mean moving away from any artificial techniques and methods to try and reduce the natural world to some primitive state. As Bruno Latour says, “There is nothing on earth that is precisely ‘natural,’”<span class="sup9 supA">9</span> and indeed, considering the ostensibly “primitive” state of the natural world to be an ideal of harmony that humankind should strive to achieve is itself a rather romantic and anthropocentric interpretation. In place of such restorative ecological lenses, Zhao himself appears to lean more towards the viewpoint of scholars like Fred Pearce, who posit that the natural world has its own life cycles and powers of resilience.<span class="sup10 supA">10</span> Where restorative ecology focuses on quick fixes, leaning on scientific and technological methods, the artist’s explorations instead tend to pose more fundamental questions about the complex relationship between humans and nature. He strives to understand the dynamics of natural ecosystems from the past to the present, as well as the various interdependencies, paradoxes, and tensions with human society that have sprung up, and then gives expression to this process within the frameworks of visual art.</p>
+					
+		<p>Based on his own empirical knowledge, gained from years of observation and exploring the forest, Zhao understands that nature does not reveal itself easily. The symbol of the eagle owl with its back turned<span class="sup11 supA">11</span> is an expression of the old adage: “Nature loves to hide.”<span class="sup12 supA">12</span> Whether it is hundreds of parakeets wheeling through the air every evening at the same hour, gathering to perch on a particular tree in the Choa Chu Kang neighborhood; or, a tapir, one day, swimming over from the Malay Peninsula all the way to Singapore; or, the beautiful lace-like “crown shyness”<span class="sup13 supA">13</span> that regularly occurs among Albizia trees—to Zhao, the many scientific hypotheses are always counterpointed by many persistent unknowns. Life in the secondary forest is not always friendly to outside intervention, nor—as the artist noted after one actual near-death experience, when a huge tree came crashing down mere inches behind him— can it be called a safe space. Even behind his camera lens, zooming in and out, so committed to seeing all that can be seen, he also always asserts that yet more still lies beyond what is visible.</p>
+				
+			<p><i>Seeing Forest</i> reveals that life not only exists behind the everyday of this city so known for its urban development, but that these lives are in motion, dynamic; it shows us that these various ac- tors spend their own life force to divide up and utilize the full scope of this island. And it is the very diversity of these entanglements and disjunctions, as the exhibition asserts, that enriches all life on the island of Singapore—and beyond. Zhao conveys the importance of learning to listen with care and observing closely when it comes to the natural world, reaching beyond notions of protecting and managing it to consider how human society might fully coexist with the wide-ranging and unknown life forms that are already among us, or well on their way.</p>
+				
+		<p>Lives at the demarcation line between city and nature find themselves mutually transformed, even as unintentional organic orchestrations change the landscape itself. Nature selects for relationships over independent entities. Can human society follow in kind, surrendering its insistence on control to join the broader rhythms of natural communication as another participant in an interdependent network? Can we—rather than constructing our own safety nets and drawing ever more boundaries—actually build community together with bodies that are wildly different from our own?</p>
+					
+		<p>Robert Zhao Renhui’s exhibition showcases the unique coexistence of city and nature in Singapore’s secondary forests, presenting it not as an example of a scenario where nature is destroyed by human intervention, but rather a point of entry into the symbiosis and harmony to come; that is, if we were to commit to acknowledging and allowing the chaos and complexity involved, including those things and beings unknown and unknowable.</p>
+				
+		<h4><i>Translated from Korean by Maya West</i></h4><br>
+		
+		<h4>1 &emsp; This introduction references scenes and/or quotes from Robert Zhao Renhui, <i>The Owl, The Travellers, and The Cement Drain</i> (2024), a video piece in the exhibition Seeing Forest. The script of Umi and Yazid was written by Joel Tan.</h4>
+					
+		<h4>2 &emsp; John Berger, “Why Look at Animals?” [1977], <i>About Looking</i> (New York: Pantheon Books, 1980), 3–28.</h4>	
+				
+		<h4>3 &emsp; Upon his return home, Sir Stamford Raffles founded the Zoological Society of London in 1826 and established the London Zoo in Regent’s Park in 1828. At the time of its founding, the London Zoo was the first modern facility of its kind to be located in the city center that was both open to the public and served as a scientific institution. It also constituted a symbol of colonial power.</h4>	
+					
+		<h4>4 &emsp; Founded in 1998 by the artist, the “Institute of Critical Zoologists” is both a “research lab” that blends fiction and reality and a website that catalogues his work. Under this name, Zhao sometimes borrows from scientific language and methodologies to use natural history as a critical frame in his own work. On the website, the ICZ is described as follows: “The institute of Critical Zoologists is the first interdisciplinary scholarly centre dedicated to promoting critical dialogue on the principles and practices of animal spectatorship and animal-related policies in the fields of social sciences, ecology and the arts. The institute employs a variety of methods to pursue its mission—engaging in research, classification and exhibition.” See criticalzoologists.org.</h4>
+					
+		<h4>5 &emsp;<i>New Forest</i> is also the title of a two-volume artist book published by Robert Zhao Renhui. <i>New Forest 1: A History of Cows</i> (2020) compiles records of wild cattle herds found in Singapore, while <i>New Forest 2: Wild Worlds</i> (2022) juxtaposes footage of ongoing deforestation against the process of a wild boar giving birth, filmed from the artist’s apartment during the pandemic.</h4><br>
+
+		<h4>6 &emsp; “Consider, indeed, the question of what’s left. Given the effectiveness of state and capitalist devastation of natural landscapes, we might ask why anything outside their plans is alive today. To address this, we will need to watch unruly edges.” Anna Lowenhaupt Tsing, “The Arts of Noticing,” <i>The Mushroom at the End of the World: On the Possibilities of Life in Capitalist Ruins</i> (Princeton University Press, 2015), 20.</h4><br>
+
+		<h4>7 &emsp; Built in 1936 under British colonial rule, Gillman Barracks was a military installation. During World War II, it and its surroundings saw battle against Japanese forces. After Singapore’s independence, the site was used as a training facility for the Singapore Armed Forces before finally becoming a contemporary art cluster with art galleries and events in 2012.</h4><br>
+
+		<h4>8 &emsp; The Albizia tree, in particular, is believed to have been introduced to Singapore from South America in the 1870s. Due to its rapid soil adaptation and growth, it soon became the main tree in these secondary forests, as well as a nest- ing site for eagles. Because they have thin roots and tend to fall rather easily, those once planted along city streets have even been removed for safety issues. From 31 August to 3 September 2023, Robert Zhao Renhui created and performed <i>Albizia</i>, a theater performance about Singapore’s secondary forests, at the Esplanade Theatre in Singapore.</h4>
+
+		<h4>9 &emsp;“On Earth, nothing is exactly ‘natural’ if we take that term to mean that which has not been touched by any living being: Everything is raised, put together, imagined, maintained, invented, intricately linked by agencies which, in a way, know what they want, or in any case aim at a goal that is exclusively their own, each agency for itself.” Bruno Latour, <i>After Lockdown: A Metamorphosis</i> (Cambridge: Polity, 2021), 20.</h4><br>	
+		</div>	
+			</div>
+			</div>	
+
+		
+		<p>——<br>
+		<br><i>Two People, Through a Forest, One Day</i> (Actors' Script)<br>
+		by Joel Tan
+		</p>
+		<div class="readMoreNav Web"><a href="more.html#text-script">> read more</a></div>
+		<br>
+		
+		<div class="topCol-M1">
+		<div class="center-align">1.<br>
+				<i>Yazid is peeing. Hot streams of pee. Then a second figure emerges, Umi, watching.</i></div>	
+				
+					<p class="actor-R"><br><br>Umi: Fuck lah</p>				
+					<p>Yazid: What</p>				
+					<p class="actor-R">It's</p>
+					<p>What</p>					
+					<p class="actor-R">Coming towards (me)</p>
+					<p>Then just</p>	
+					<p class="actor-R">Stinks</p>	
+					<p>Your pee then</p>
+					<p class="actor-R">You eat petai or</p>
+					<p>Can you don’t</p>	
+					<p class="actor-R">What</p>
+					<p>Watch</p>
+					<p class="actor-R">Why</p>	
+					<p>I can’t…</p>	
+					<p class="actor-R">You still got summore?</p>
+					<p>Fuck off lah don’t—</p>
+					<p class="actor-R">Okay.<br><br></p>
+		
+		<div class="details">
+		<button class="readMoreNav" title="Click to Show"  type="button" onclick="toggle(this)">> read more</button>
+
+		<div class="moreDetails">
+					
+				<div class="center-align"><br><i>Umi moves away.<br>More peeing.</i></div>
+					
+					<p class="actor-R"><br><br>You ever pee before with so many people watching?</p>
+					<p>What?</p>
+					<p class="actor-R">Like doing show lidat</p>
+					<p>Who’s watching? Fuck are you still watching?</p>
+					<p class="actor-R">All of them lah.</p>
+				
+				<div class="center-align">——</div>	
+					
+					<p>What. Who?<br> 
+					Eh don’t leh fuck. <br>
+					Here got what, got
+					</p>	
+					<p class="actor-R">Audience. <br> Hantu kan?</p>	
+					<p>Got… Fuuuuck lah </p>	
+					<p class="actor-R">Kampung ghost. Tree ghost</p>
+					<p>That one is spirit not ghost</p>	
+					<p class="actor-R">Yah not all ghosts are bad. <br>Some are bad. <br>Japanese ghost?</p>
+					<p>Here got meh</p>
+					<p class="actor-R">Yah.</p>	
+					<p>The</p>	
+					<p class="actor-R">Those relatively new. </p>
+					<p>That one Chinese lah</p>	
+					<p class="actor-R">Japanese</p>
+					<p>You sure? Wait I need to concentrate.</p>	
+					
+				<div class="center-align">——</div>	
+
+					<p class="actor-R">Not just ghost also got insect</p>
+					<p>Insects.</p>	
+					<p class="actor-R">Bird, squirrel, all sitting in the tree<br> watching you shit.<br> Wild boar.
+					</p>	
+					<p>Here got wild boar?</p>
+					<p class="actor-R">Confirm.</p>	
+					<p>Fuck, that one is no joke</p>
+					<p class="actor-R">You more scared of wild boar than ghost?<br> Ghost you can negotiate. 
+					</p>	
+					<p>Negotiate what fuck</p>
+					<p class="actor-R">Help them find closure, /find the long lost relative… 
+					</p>
+					<p>(laughs)</p>
+					<p class="actor-R">That’s all they want kan. Some of them don’t even know the 
+					</p>
+					<p>Who?</p>
+					<p class="actor-R">The</p>
+					<p>Okay I’m done, let’s go.</p>
+					<p class="actor-R">The Japanese one, don’t even know the war is over…</p>
+					<p>Issit. You got meet before?</p>	
+					<p class="actor-R">Yah why not.</p>
+					
+				<div class="center-align">——</div>	
+					
+					<p class="actor-R">Got crocodile also. <br>That one no joke. <br>Ghosts can negotiate. <br>Crocodile cannot.<br><br><br>
+					</p>
+					
+				<div class="center-align">2.<br><br></div>	
+					<p>Fuck here really got crocodile?</p>	
+					<p class="actor-R">Just now you never see?</p>
+					<p>What? Where?</p>
+					<p class="actor-R">Near the tentage that side.</p>
+					<p>Never. Eh, are you serious not.</p>	
+					<p class="actor-R">They’re harmless one. You just don’t make sudden movements can liao.</p>
+					<p>Harmless?</p>
+					<p class="actor-R">Yah they’re our friends. They eat bad ghosts one.</p>
+					<p>Crocodiles?</p>
+					<p class="actor-R">Yah, got see before.</p>
+					<p>(laughs)</p>
+					<p class="actor-R">Like eating sushi. <br>This one the Jap ghosts most scared.</p>
+					<p>How come?</p>
+					<p class="actor-R">‘cuz bayonet.</p>
+					<p>The teeth.</p>
+					<p class="actor-R">Mm.</p>
+					<p>Then Ang moh ghost?</p>
+					<p class="actor-R">Ang moh ghosts scared boar.</p>
+					<p>Why?</p>
+					<p class="actor-R">‘cuz boar their country also got.</p>
+					<p>Issit. Got see before?</p>
+					<p class="actor-R">Got, got see one ang moh ghost kena lunga with the two… that one?</p>
+					<p>Tusks</p>
+					<p class="actor-R">Then stuck to the tree.</p>
+					<p>(laughs)</p>
+					<p class="actor-R">‘cuz why? ‘cuz dunno how to run.</p>
+					<p>Zig zag</p>
+					<p class="actor-R">‘cuz dunno how to avoid the tree.<br> Then kena stuck to the tree.<br>Kena eat by ants.</p>
+					<p>Now the ants also involved.</p>
+					<p class="actor-R">The ants are the most involved.</p>
+					<p>Irritating sial the ants.<br> See, they coming for my leg.</p> 
+					<p class="actor-R">	Why?</p>
+					<p>‘cuz my pee confirm sweet.</p> 
+					<p class="actor-R">Why?</p>
+					<p>‘cuz I also sweet</p>
+					<p class="actor-R">Gross<br><br><br></p>
+
+				<div class="center-align">3.<br><i>They’re passing by a rockface. Ruins.</i></div>
+						
+					<p><br><br>How long more?</p>
+					<p class="actor-R">You hungry?</p>
+					<p>What? No, I tired.</p>
+					<p class="actor-R">In front got rock can sit.</p>
+					<p>Kay.</p>
+					<p class="actor-R">turns back to look.</p>
+					<p>This one whose house?</p>
+					<p class="actor-R">Last time one.</p>
+					<p>Look like condo sial.</p>
+					<p class="actor-R">(laughs)</p>
+					<p>This area think the valuation quite high summore.</p>
+					<p class="actor-R">I know right.<br> What?</p>
+					<p>Here got one ang moh ghost.</p>
+					<p class="actor-R">Issit.</p>
+					<p>Very long liao.</p>
+					<p class="actor-R">Issit.</p>
+					<p>Then got earthquake.</p> 
+					<p class="actor-R">Earthquake?</p>
+					<p>Yah the ground like (boom) then open up</p>
+					<p class="actor-R">How you know</p>
+
+					<p>I saw<br>—<br>
+					Open up and eat him <br>
+						like butter cookie. <br>
+						Heart attack or maybe stroke.</p>
+
+					<p class="actor-R">‘cuz you know last time here got one hill?</p>
+					<p>Is it?</p>
+					<p class="actor-R">Yah very tall one. <br>The ang mohs blew it up.<br> For sand. <br>To reclaim the…</p>
+					<p>Oh yah.</p> 
+					<p class="actor-R">So during hungry ghost<br> the hill ate him back</p> 
+					<p>like butter cookie. </p>
+					<p class="actor-R">While he was shitting.</p>
+						
+				<div class="center-align">——</div>
+						
+					<p>So this was a</p>
+					<p class="actor-R">Toilet.</p>
+					<p>Next time condo.</p>
+					<p class="actor-R">Same lah, condo, toilet.<br><br><br></p>
+	
+				<div class="center-align">4.<br>
+						<i>The two sitting on a rockface. In the distance, we see two other forms, obscured, blurred, moving gently, fucking. Our two figures sit and watch for several moments, then</i></div>	
+						
+						<p><br><br>Later there got anything to eat?</p>
+						<p class="actor-R">Banana.</p>
+
+						<p>Oh.</p>
+						<p class="actor-R">You want meat you must ownself catch.</p>
+						
+					<div class="center-align">——</div>
+						
+						<p>Will it hurt?</p>
+						<p class="actor-R">Mm.</p>
+						<p>Did it hurt, when</p>
+						<p class="actor-R">It’ll be fine.</p>
+						<p>Really.</p>
+						<p class="actor-R">Like ant bite. </p>
+						<p>Like</p>
+						<p class="actor-R">Short ant bite. Then </p>
+						<p>Then</p>
+						<p class="actor-R">Then you’ll see lah. </p>
+						<p>How you--</p>
+						<p class="actor-R">I bring how many people already. </p>
+
+					<div class="center-align">——</div>
+						<p>Yah okay.</p>
+						<p class="actor-R">Got music.</p>
+						<p>Issit.</p>
+						<p class="actor-R">Yah got. Your body will tell you what to do don’t worry.</p>
+						<p>Okay.</p>
+						<p class="actor-R">You scared ah.</p>
+						<p>‘course lah.</p>
+						<p class="actor-R">Scared what? No one will catch one.</p>
+						<p>(laughs)</p>
+						<p class="actor-R">See the two of them?<br>You think they scared?</p>
+						<p>I think so.</p>
+						<p class="actor-R">Why?</p>
+						<p>‘cuz when you cum finish then you remember you’re covered in shit.</p>
+						<p class="actor-R">You very unromantic ah.</p>
+						<p>…</p>
+						<p class="actor-R">…</p>
+						<p>See, he cum already.<br><br><br></p>
+					
+					<div class="center-align">5.<br></div>	
+						<p class="actor-R"><br>Can you hear it?</p>
+						<p>Yah<br>Psy trance?</p>
+						<p class="actor-R">Something lidat. <br>You like psy trance ‘not?</p>
+						<p>More of a house and techno guy.</p>
+						<p class="actor-R">You request lah.</p>
+
+						<p>Can meh?<br>It’s okay. <br>Jungle. </p>
+						<p class="actor-R">What?</p>
+						<p>I like jungle.</p>
+						<p class="actor-R">Oh.</p>
+
+						<p>Jungle never die.</p>
+						<p class="actor-R">I thought it’s rock?</p>
+						<p>Jungle also.</p>
+
+					<div class="center-align">——</div>
+
+						<p>When I wake up</p>
+						<p class="actor-R">Mm</p>
+						<p>Will you be there?</p>
+						<p class="actor-R">Depends.</p>
+						<p>Oh.</p>
+						<p class="actor-R">But think by then you won’t care liao.</p>
+						<p>Why?</p>
+						<p class="actor-R">‘cuz…<br>
+‘cuz there’ll be birds.<br> 
+‘cuz there’ll be ants.<br>
+‘cuz there’ll be the small river<br>
+‘cuz there’ll be the tree sort of,<br>
+how to say…<br>
+you ever got do shrooms?</p>
+						<p>yah</p>
+						<p class="actor-R">So you know lah.<br>
+it’ll be like that<br>
+sort of <br>
+like life flashing past your…<br>
+‘cuz once you let go <br>
+it’s just like<br>
+all the ants…<br>
+all the birds…<br>
+y’know?<br>
+you’re the tree<br>
+the tree is you<br>
+that kind of thing</p>
+						<p>wow</p>
+						<p class="actor-R">very shiok one don’t worry.</p>
+						<p>Okay</p>
+						<p class="actor-R">You just gotta let go</p>
+						<p>Okay</p>
+						<p class="actor-R">Let go your body and<br>Just dance</p>
+						<p>Dance</p>
+						<p class="actor-R">Yah like an idiot</p>
+						<p>Dance like an idiot</p>
+						<p class="actor-R">Yah really feel it</p>
+						<p>Okay</p>
+						<p class="actor-R">Feel it take over your body</p>
+						<p>Okay</p>
+						<p class="actor-R">‘cuz that’s where it’s always been right?<br> Where anything starts.</p>
+						<p>Yah</p>
+						<p class="actor-R">The wind<br>
+The ants<br>
+The birds<br>
+The tree<br>
+The rocks<br>
+The shit </p>
+						<p>The piss</p>
+						<p class="actor-R">The piss</p>
+						<p>All dancing. </p>
+						<p class="actor-R">Correct.</p>
+
+					<div class="center-align">——</div>
+
+						<p>What if the crocodile</p>
+						<p class="actor-R">What thing</p>
+						<p>Like, the crocodile come and eat me?</p>
+						<p class="actor-R">That’s fine. <br>It’s different than…
+	<br>It’s not revenge eating.
+	<br>Just eating.</p>
+						<p>Is it?</p>
+						<p class="actor-R">‘cuz then you’ll be in the river.</p>
+						<p>Okay.</p>
+						<p class="actor-R">And then eventually the chicken</p>
+						<p>Okay</p>
+						<p class="actor-R">And then the eagle</p>
+						<p>Okay</p>
+						<p class="actor-R">And then the tree</p>
+						<p>Okay</p>
+						<p class="actor-R">and then the flower</p>
+						<p>and then the sky</p>
+						<p class="actor-R">	yah<br> and then the sun.</p>
+						<p>okay.</p>
+						<p class="actor-R">Okay?<br> Okay come.</p>
+						<p>Wait</p>
+						<p class="actor-R">What</p>
+						<p>I need to pee</p>
+						<p class="actor-R">Again?</p>
+						<p>Yah</p>
+						<p class="actor-R">Okay, no rush.</p><br>
+
+					<div class="center-align"><i>He steps aside to pee.<br>
+
+	As he does, to himself, quietly.</i></div><br>
+
+						<p>River, fish<br>
+Fish, bird<br>
+Bird, ant<br>
+Ant, fruit<br>
+Fruit, monkey<br>
+Monkey, tree,<br>
+Tree, flower<br>
+Flower, sky<br>
+Sky, sun,<br>
+Sun, leaf<br>
+Leaf, boar<br>
+Boar, crocodile<br>
+Crocodile, ant,<br>
+Ant, fruit…<br>
+Then sun…</p>
+
+						<div class="center-align"><i>Then, a rave.<br><br></i></div>
+			</div></div></div>
+		
+		<p>——<br>
+		<br><i>Surprised by Birds</i><br>
+		A conversation between Robert Zhao Renhui & Yong Ding Li
+		</p>
+		<div class="readMoreNav Web"><a href="more.html#text-interview">> read more</a></div>
+		
+		<div class="topCol-M">
+		
+		<p>Yong Ding Li is a conservation biologist with a keen interest in the conservation of migratory species, wetlands, and tropical birds. He works widely across the region to develop and implement projects that protect ecosystems and species, including some of the world’s most threatened wildlife, including the Spoon-billed Sandpiper. He has written extensively on biodiversity and species conservation in the Asia-Pacific, including guide books to the birds of Singapore, Malaysia, and China. He is the recipient of the Society of Conservation Biology’s Early Career Conservationist Award of 2023. He has been friends with Robert Zhao Renhui since they were sixteen, and has acted as a frequent collaborator and consultant on Zhao’s projects. What follows is a conversation in which they discuss their friendship, their mutual influence, and the significance of secondary forests in Singapore.</p>	
+			
+		<div class="details">
+		<button class="readMoreNav" title="Click to Show"  type="button" onclick="toggle(this)">> read more</button>	
+			
+		<div class="moreDetails">			
+			<p class="convoW"><br><span class="nameconvo">Robert Zhao Renhui</span> Do you remember when we first met? It was 1999, the last day of secondary school. You were in the academically strongest class in our level and I was in the worst, so we never really spoke to each other. But that day, you were running an exhibition at the school library, called <i>Surprised by Birds</i>, featuring your drawings of birds and natural spaces in Singapore. I was especially fascinated by a little baby python that you had preserved in alcohol in a bottle. At that time, I also had preserved a python, a piece of roadkill, as well as other sorts of interesting animals I picked up. So, because of your preserved python, I spoke to you, and we became friends. When we were teenagers, we spent most of our time exploring various natural spaces. At that time, you were already a very serious birdwatcher, and I liked taking photographs of Singapore landscapes that did not look like Singapore. I was also an avid collector and, like you, collected taxidermy specimens. I think we had conversations about the pressures of nature adapting to Singapore’s urban landscapes. Most of the roadkill I found were near newly developed neighborhoods near secondary forests.</p>
+					
+			<p class="convoW">We spent a lot of time exploring natural spaces that were on the edges of the city, and shared information with each other. I guess we mutually influenced the direction of each other’s work a lot of times. I remember calling you in 2004 to tell you about a wild boar piglet roadkill I found on a road in Lim Chu Kang (it’s still in a jar of alcohol in my old house). Six years later, you wrote a research paper about the population of wild boars increasing in Singapore, and advocated for further research and conservation management for the species. It was one of those early wildlife management papers as no one had written about them those days. I then referenced your research in <i>The Quieting and the Alarming</i> (2013), my body of work about our relationships with wild boars in Singapore.</p>
+				
+			<p class="convoW">After that, I always kept you in the loop about my projects. I think I am most inspired and intrigued by the relationship you had with forests. I remember that you would simply lie down on the ground in the rainforest and gaze straight up for hours into the canopy just to look at birds. It taught me about being attentive and quiet in observing nature, and I had gradually learnt how to look at it as well. It also helped that when I was exploring these spaces that I had a nature expert who knew how to identify species and knew interesting things about their natural history—I myself learnt a lot about identifying birds by their calls through you. Did collaborating with me on my art projects change your mind in any way?</p>
+					
+					
+				<p class="convo-R"><span class="nameconvo">Yong Ding Li</span> Let’s see. Your work made me ponder and reconsider the importance of secondary forests for wildlife. In our early explorations, we did spend some time in many areas of secondary forests. In 1997, we went birdwatching in a patch of forest near Bukit Batok Road, now cleared, as well as a huge plot of reclaimed land in Changi that we used to call Tanah Merah. We took the bus from Tanah Merah MRT—simply because of its proximity to the ferry terminal. We didn’t know much about ecology, but the main reason why we went there was to look at rare birds that we were hoping for and had been spotted by other birdwatchers.</p>
+
+				<p class="convo-R">Then I learned more about primary or old growth forests like Bukit Timah Nature Reserve, and the diversity of plant and animal species in these places. Old growth forests eventually became the focus of my nature walks, research, and documentation, and I must admit that I did not pay much attention to secondary woodlands afterwards.</p>
+
+				<p class="convo-R">Preconceived notions about what secondary woodlands (as straggly, ecologically boring, filled with common invasive species) got the better of me. Or maybe the obsession with primary forests just made me not think too much about secondary forests and woodlands. I’ve actually never been to Gillman forest until your art projects there. First impressions were: “Just another Albizia and <i>simpoh air</i> [tree shrub growing on swampy ground] woodland with a few Tembusu trees here and there.” At that point, I didn’t know much about the history that is buried under the forests here of course, nor the migratory birds that you have documented!</p>	
+					
+				
+				<p class="convoW"><span class="nameconvo">RZR</span> Yes, I started exploring Gillman Forest in 2016 during my residency at NTU Centre of Contemporary Art. I asked you along to explore the space with you. Do you remember your first impressions of the forest? You said rather dismissively that I wasn’t going to find anything interesting. We were also attacked by a drongo that swooped down to peck our heads the moment we stepped in. We had to carry umbrellas to protect ourselves. For the rest of the year, whenever we entered the forest, this bird would swoop down to attack—then it stopped. I often wonder why it stopped. Romantically, I think it was because of a mindset shift in me that perhaps the bird sensed. It was only after one year that I came to respect the forest as a home, an independent entity, rather than a project space I could mine for art. I was more interested in going inside to understand and feel it than to make any specific artwork. That was why I set up all the camera traps in the forest, to know more about what goes on in there when people are not around.</p>
+				<p class="convoW">Does Gillman feel any different from the rest of the forests you know, after so many years?</p>	
+					
+				
+				<p class="convo-R"><span class="nameconvo">YDL</span> Not at first glance. From afar, it looks like just another woodland with a few tall trees sticking out! Many woodlands look like that, Dover Forest, Lentor, Bukit Batok forest, and elsewhere.</p>
+					
+				
+				<p class="convoW"><span class="nameconvo">RZR</span> Ecologists like you tend to take a particular view on so-called invasive species like Albizias but I think they are beautiful trees! Because they are tall I always see them against the bare sky and their lacy silhouettes are very striking. Anyway, I remember you finally ventured into the Gillman forest alone after I told you about the rare birds that visited the drain.</p>	
+				
+					
+				<p class="convo-R"><span class="nameconvo">YDL</span> I was quite surprised by your camera trap images of the animals that visited the drain. There were migratory birds like a Von Schrenck’s Bittern, the Black Bittern, and a regularly visiting Japanese Sparrowhawk; pittas, thrushes. I definitely did not expect to see these relatively rare birds in such a small patch of woodland just a few hundred meters from a busy road, and with lots of walkers.</p>
+
+				<p class="convo-R">Basically, Gillman forest is one stop of thousands of migratory birds on the East Asian–Australasian Flyway, which millions of birds use in their migration. The flyway stretches from Russia to across much of Southeast Asia. On the way, they stop by wetland habitatsto rest and recharge. After numerous visits to Bidadari, another secondary forest, I’m beginning to believe that the smaller forests and woodlands in Singapore, especially the secondary forests, are conducive stops for migratory birds. Gillman easily hosts ten to twenty migratory bird species, and there are probably others we have not seen. Gillman is also an oasis for adventive birds from faraway lands. So, Gillman is unique in that way. It is more hospitable than we thought. It has a mix of migratory species, foreign species that originally did not belong to Singapore ecosystems, but have established themselves here, and native species like tree shrews—again not something I expected.</p>
+					
+					
+				<p class="convoW"><span class="nameconvo">RZR</span> There is a sense of this ecological diversity that I am trying to capture in my work. I feel that secondary forests are resilient and adaptable spaces for wildlife in Singapore. They absorb elements from everywhere and some kind of quasi-natural equilibrium is achieved. They don’t discriminate against who belongs and who doesn’t, and many of its spots that are most conducive to wildlife—watering holes in the form of abandoned dustbins and broken cement drains—are actually remnants of human habitation and development…</p>		
+					
+					
+				<p class="convo-R"><span class="nameconvo">YDL</span> That’s a good point. I have also come to realize something: in Singapore, forests can retain memories much more so than developed land. When apartments are built over a forest land as it has recently happened in Tengah, the forest is lost, most certainly irreversibly so. At the same time, the memories of the land and the structures that existed below are also lost forever. In Singapore, most secondary forests probably existed over land that was once used by people for something else, such as farms, plantations, and even military barracks. Singapore is an interesting case study. When you destroy a secondary forest today, you are no longer just destroying the nature that is above the ground. You may well also be erasing the history that is buried under it forever, and the soil. When you build a block of apartments over a forest, you have to dig deep to put in the foundations of those buildings. You need to remove lots of soil, which contains fragments of who and what once lived there. And once the buildings are built, you may never be able to access what lies under them unless you can remove those buildings one day and dig deep into the ground.</p>	
+				
+				<p class="convo-R">These little patches of secondary forests don’t just preserve nature, rare species, and ecological processes, they also inadvertently preserve bits of history and memory that may have been from the last century. In Gillman forest, you found ceramics in the streams. In the soil, you found bits of bricks, glass, and other containers, which evidently came from the Japanese occupation years.</p>
+					
+				
+				<p class="convo-R">Essentially, nature’s takeover is comparably “gentle” on history. Letting nature run over a landscape, as it has happened here and other parts of the world, actually allows the history of a place to be preserved. I fear the day that Gillman is built over, because once that is done, the landscape here will be changed forever and what remains of the memory of this place will just be documents and a few photographs in the archives.</p>	
+				
+				
+				<p class="convoW"><span class="nameconvo">RZR</span> That’s an amazing observation. It’s something that I’ve tried to capture in my video work, the feeling of sedimentation and coexistence of different timescales and histories. In the secondary forest time is somewhat thicker than in other places—there are layers upon layers of stories of animals, plants, humans, and being quiet and attentive might reveal something of these hidden worlds. The world is much richer and more mysterious than we might think.</p>
+					
+				
+				<p class="convo-R"><span class="nameconvo">YDL</span> I feel that there are quite a few things that art can do that conventional science has repressed. Art can provide a platform to tell stories that make us reflect on our values and relationships with nature.</p>
+					
+				
+				<p class="convoW"><span class="nameconvo">RZR</span> Some people like to ask about the conservation angle to my work. Actually, I don’t necessarily have a specific conservation angle. My angle is that we should just respect the variety and diversity of things and places in the world and tread very gently in our actions.</p><br>
+		
+			</div></div></div>
+		
+		
+		
+		<br><br><br>
+		
+	</div>	
+	
+	
+	<div class="columns">
+		<div class="topCol">
+		<div class="name3">Singapore Pavilion<br>The 60th International <br>Art Exhibition of</div>
+		<div class="name3 rightAlign">La Biennale di Venezia</div>
+		</div>
+		
+		<a href="#cc"><button class="cc-but">Catalogue/Credits ></button></a>
+		
+		<a href="more.html#credit"><button class="titleBorder Web">Catalogue/Credits</button></a>
+		<a href="#cc"><button class="titleBorder Mobile">Catalogue/Credits</button></a>
+		<a href="#cc"><button class="titleBorder Mobile-show">Catalogue/Credits</button></a>
+		<a id="cc">&nbsp;</a>
+		
+		<p>
+		Catalogue information<br>
+		—<br>
+		Seeing Forests (Vol. 1 of 2)<br>
+		Robert Zhao Renhui<br>
+		<h4>Edited by Anna Sophie Springer & Etienne Turpin<br>
+		Published by K.Verlag & Singapore Art Museum, 2024
+		</h4>
+		</p>
+		
+	<p><a class="readMoreNav" target=”_blank” href="http://seeingforest.com/catalogue/book1.pdf">> download catalogue</a></p>
+	<p>——<br><br>
+		Credits<br>
+		—<br>
+		<div class="creditsUL">
+		<h4>Commissioning panel<br><br>
+ 
+		Co-Chairs
+		<li>Low Eng Teong</li>
+		<li>Eugene Tan</li><br>
+			
+		Members<br>
+		<li>Mae Anderson</li>
+		<li>Patrick Flores</li> 
+		<li>Honor Harger</li>
+		<li>Ho Tzu Nyen</li> 
+		<li>Low Sze Wee</li>
+		<li>David Teh</li><br> 
+		
+		Artist<br>
+		<li>Robert Zhao Renhui</li><br>
+
+		Curator<br>
+		<li>Haeju Kim</li><br>
+
+		Associate Producer<br>
+		<li>James Jordan Tay</li><br>
+ 
+		Graphic Designer<br>
+		<li>Moonsick Gang</li><br> 
+ 
+		Catalogue Co-Publisher<br>
+		<li>K. Verlag</li><br> 
+ 
+		Technical Manager<br>
+		<li>Nic Tan</li><br>
+ 
+		Sound Designer and Composer<br> 
+		<li>Jang Young-gyu</li><br>
+ 
+		Script Writer<br>
+		<li>Joel Tan</li><br>
+ 
+		Actors<br>
+		<li>Umi Kalthun</li>
+		<li>Yazid Jalil</li><br>
+ 
+		Editor<br>
+		<li>Adeline Chia</li><br>
+ 
+		Film Production Unit<br>
+			<li>Arrvinraj Balasubramaniam</li> 
+		<li>Lewis Choo</li>
+		<li>Ge Xiaocong</li>
+		<li>Goh Chun Aik</li>
+		<li>Hong Shuying</li><br>
+ 
+		Carpenters<br>
+		<li>Teo Teah On</li>
+		<li>Ah Fai</li><br>
+  
+		Project Consultant<br>
+		<li>SP Tan</li><br>
+			
+		Pavilion Fabricator<br> 
+		<li>M+B Studio</li><br> 
+ 
+		Media Relations<br>
+		<li>Tate Anzur</li> 
+		<li>Pickles PR</li><br> 
+ 
+		Freight Services<br> 
+		<li>Helu-Trans (S) Pte Ltd</li><br> 
+ 
+		Translator<br>
+		<li>Alessandra Biscaro</li><br>
+
+		Website Design<br>
+		<li>gideon-jamie</li><br>
+
+		Singapore Art Museum<br>
+		<li>Shermain Chang</li> 
+		<li>Esther Conyard</li> 
+		<li>Michelle Goh</li>
+		<li>Kong Yin Ying</li> 
+		<li>Gwyneth Liew</li> 
+		<li>Suhirman Sulaiman</li>
+		<li>Luke Mathew Tan</li> 
+		<li>Tan Shir Ee</li>
+		<li>Teo Loo Bing</li>
+		<li>Tiffany Wan</li>  
+		<li>Melissa Wong</li> 
+		<li>Sherlyn Wong</li>
+		<li>Raymond Wu</li><br>  
+ 		
+		Special thanks to the entire team at Singapore Art Museum and the Singapore Pavilion Ambassadors.<br><br>
+			
+		Organised by<br>
+			<li>Singapore Art Museum</li><br>
+		
+		Commissioned by<br>
+			<li>National Arts Council Singapore</li><br>
+			
+		Supported by<br>
+			<li>Ministry of Culture, Community and Youth</li><br><br><br>
+			
+			
+
+			
+
+		</h4>
+		
+		
+			
+		</div>	
+
+	</p>
+	
+	</div>	
+	
+	
+	<div class="marquee"><h4>List of species observed in a Gillman Forest:
+	&emsp; &emsp; Smooth-coated Otter
+	&emsp; &emsp; Crab-eating Macaque
+	&emsp; &emsp; Common Tree shrew
+	&emsp; &emsp; Plantain Squirrel
+	&emsp; &emsp; Reticulated Python
+	&emsp; &emsp; Cobra
+	&emsp; &emsp; Painted Bronzeback
+	&emsp; &emsp; Oriental Whip Snake
+	&emsp; &emsp; Water Monitor
+	&emsp; &emsp; Clouded Monitor
+	&emsp; &emsp; Common Sun Skink
+	&emsp; &emsp; Buffy Fish Owl
+	&emsp; &emsp; Collared Scops Owl
+	&emsp; &emsp; Black Bittern
+	&emsp; &emsp; Von Schrenck’s Bittern
+	&emsp; &emsp; Malayan Night Heron
+	&emsp; &emsp; Black-crowned Night Heron
+	&emsp; &emsp; Red-legged Crake (Breeding)
+	&emsp; &emsp; White breasted Waterhen (Breeding)
+	&emsp; &emsp; Common Kingfisher
+	&emsp; &emsp; Collared Kingfisher
+	&emsp; &emsp; White-throated Kingfisher
+	&emsp; &emsp; Orange-headed Thrush
+	&emsp; &emsp; Black-throated Laughing Thrush
+	&emsp; &emsp; Red-billed Blue Magpie
+	&emsp; &emsp; Japanese Sparrowhawk
+	&emsp; &emsp; Changeable Hawk-eagle
+	&emsp; &emsp; Oriental Honey Buzzard
+	&emsp; &emsp; Brahminy Kite
+	&emsp; &emsp; White-bellied Fish Eagle
+	&emsp; &emsp; Brown-chested Jungle Flycatcher
+	&emsp; &emsp; White-rumped Shama      
+	&emsp; &emsp; Siberian Blue Robin
+	&emsp; &emsp; Greater Coucal
+	&emsp; &emsp; Red-whiskered Bulbul
+	&emsp; &emsp; Large-tailed Nightjar
+	&emsp; &emsp; Straw-headed Bulbul
+	&emsp; &emsp; Asian Koel
+	&emsp; &emsp; Yellow-rumped Flycatcher
+	&emsp; &emsp; Crow-billed Drongo
+	&emsp; &emsp; Tiger Shrike
+	&emsp; &emsp; Rufous Woodpecker
+	&emsp; &emsp; Pin-striped Tit Babbler
+	&emsp; &emsp; Banded Woodpecker
+	&emsp; &emsp; Ornate Sunbird
+	&emsp; &emsp; Blue-winged Pitta
+	&emsp; &emsp; Malaysian Pied Fantail
+	&emsp; &emsp; Greater Racket-tailed Drongo 
+	&emsp; &emsp; Pink-necked Green Pigeon 
+	&emsp; &emsp; Asian Glossy Starling
+	&emsp; &emsp; Javan Myna
+	&emsp; &emsp; Red Junglefowl
+	&emsp; &emsp; Common Emerald Dove
+	&emsp; &emsp; Oriental Magpie Robin
+	&emsp; &emsp; Chestnut-winged Cuckoo
+	&emsp; &emsp; Common Flameback
+	&emsp; &emsp; Crimson Sunbird
+	&emsp; &emsp; Asian Brown Flycatcher
+	&emsp; &emsp; Mugimaki flycatcher
+	&emsp; &emsp; Brown Shrike 
+	&emsp; &emsp; Crested Goshawk</h4>
+</div>
+	
+</div>
+	
+	
+	
+</body>
+</html>
