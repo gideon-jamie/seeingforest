@@ -1,4 +1,5 @@
-$(document).ready(function () {
+$(window).on('load', function () {
+    console.log('load');
     var sup1P = $('.sup1').offset().top + 8;
     $('.ref').offset({ top: sup1P });
 
@@ -47,8 +48,6 @@ $(document).ready(function () {
     var stickyTop3 = $('#credit').offset().top - 3;
 
     console.log(2 * vw);
-
-    $(window).scroll(scrollTopCheck);
 
     function scrollTopCheck() {
         var windowTop = $(window).scrollTop();
@@ -106,7 +105,9 @@ $(document).ready(function () {
     }
 
     var dwidth = jQuery(window).width();
-    jQuery(window).bind('resize', function (e) {
+    jQuery(window).bind('resize', resize);
+
+    function resize() {
         var wwidth = jQuery(window).width();
 
         vw = $(window).width() / 100;
@@ -126,7 +127,7 @@ $(document).ready(function () {
             }, 800);
 */
         }
-    });
+    }
 
     var myIndex = 0;
     carousel();
@@ -161,5 +162,10 @@ $(document).ready(function () {
         x[myIndex1 - 1].style.display = 'block';
         setTimeout(carousel1, 2000); // Change image every 2 seconds
     }
-    scrollTopCheck();
+
+    setTimeout(() => {
+        resize();
+        scrollTopCheck();
+        $(window).scroll(scrollTopCheck);
+    }, 500);
 });

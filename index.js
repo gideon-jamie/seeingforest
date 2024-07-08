@@ -1,24 +1,15 @@
-$(document).ready(function () {
-    var dwidth = jQuery(window).width();
+$(window).on('load', function () {
     var offset = 12;
-    jQuery(window).bind('resize', function (e) {
-        var wwidth = jQuery(window).height();
+    jQuery(window).bind('resize', resize);
+
+    function resize() {
         vh = $(window).height() / 100;
         vw = $(window).width() / 100;
         stickyTop = $('#intro').offset().top - 3;
         stickyTop1 = $('.Mobile:eq(1)').offset().top - offset * vh;
         stickyTop2 = $('.Mobile:eq(2)').offset().top - offset * vh;
         stickyTop3 = $('.Mobile:eq(3)').offset().top - offset * vh;
-
-        if (dwidth !== wwidth) {
-            dwidth = jQuery(window).width();
-            /*
-            if (window.RT) clearTimeout(window.RT);
-            window.RT = setTimeout(function () {
-                this.location.reload(false);
-            }, 800);*/
-        }
-    });
+    }
 
     var modal = document.getElementById('myModal');
 
@@ -150,12 +141,9 @@ $(document).ready(function () {
     }
 
     setTimeout(() => {
-        vh = $(window).height() / 100;
-        vw = $(window).width() / 100;
-        stickyTop = $('#intro').offset().top - 3;
-        stickyTop1 = $('#works').offset().top - offset * vh;
-        stickyTop2 = $('#texts').offset().top - offset * vh;
-        stickyTop3 = $('#cc').offset().top - offset * vh;
+        resize();
+        matchMedia('(max-width: 768px)').matches && scrollTopCheck();
+        $(window).scroll(scrollTopCheck);
     }, 500);
 });
 

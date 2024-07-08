@@ -109,23 +109,31 @@ ul {
 }
 
 .mainWrap {
-    width: 100vw;
-    height: 100vh;
-    overflow: scroll;
-    /*
-    padding: 2vh 1.5vw;*/
+    width: 100%;
+    height: calc(100vh - 2.5vw);
+    padding: 4vh;
+    padding-bottom: 0;
+    padding-top: 0;
     position: fixed;
+    display: flex;
+    gap: 4vh;
+    box-sizing: border-box;
 }
 
 .columns {
-    width: 22.25vw;
-    height: 90%;
-    padding-left: 1%;
-    padding-right: 1%;
+    width: 25%;
+    height: 100%;
     float: left;
     overflow: scroll;
+    padding-top: 4vh;
     -ms-overflow-style: none; /* Internet Explorer 10+ */
     scrollbar-width: none; /* Firefox */
+    padding-bottom: 5vh;
+    box-sizing: border-box;
+}
+
+.columns-texts {
+    padding-bottom: 12vh;
 }
 
 .columns-1 {
@@ -662,21 +670,25 @@ ul {
     }
 
     .mainWrap {
-        width: 100vw;
+        width: 100%;
         height: auto;
         overflow: scroll;
         /*
         padding: 2vh 2.5vw;*/
         position: relative;
+        display: block;
+        padding: 0;
+        overflow: auto;
     }
     .columns {
-        width: 90vw;
+        width: 100%;
         height: auto;
         display: block;
         padding: 0 2.5vh;
         overflow: initial !important;
         -ms-overflow-style: none; /* Internet Explorer 10+ */
         scrollbar-width: none; /* Firefox */
+        box-sizing: border-box;
     }
 
     .works-but,

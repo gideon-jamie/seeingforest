@@ -81,12 +81,12 @@ h1 {
 }
 
 .convo-R {
-    width: 47vw;
+    max-width: 47vw;
     text-indent: 4vw;
     margin: 0;
 }
 .convoW {
-    width: 43vw;
+    max-width: 43vw;
     padding-left: 4vw;
     text-indent: -4vw;
     margin: 0;
